@@ -9,40 +9,35 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-
-    <title>{% block title %}{% endblock title %}</title>
+    <title>Dstagram {% block title %}{% endblock %}</title>
 </head>
 <body>
 
-<div class=" container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Django Bookmark</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
+<div class="container">
+    <header class="header clearfix">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Dstagram</a>
+            <ul class="nav">
+                <li class="nav-item"><a href="/" class="active nav-link ">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="#" class="nav-link">Welcome, {{ user.get_username }}</a></li>
+                    <li class="nav-item"><a href="{% url 'photo:photo_upload' %}" class="nav-link">Upload</a></li>
+                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+                    <li class="nav-item"><a href="{% url 'register' %}" class="nav-link">Signup</a></li>
+                {% endif %}
             </ul>
-        </div>
-    </nav>
-    <p></p>
-    <div class="row">
-        <div class="col">
-            {% block content %}
+        </nav>
+    </header>
 
-            {% endblock content %}
+    {% block content %}
 
-            {% block pagination %}
-            {% endblock pagination %}
-        </div>
-    </div>
+    {% endblock content %}
+
+    <footer class="footer">
+        <p>&copy; 2018 Baepeu. Powered By Django 2</p>
+    </footer>
 </div>
 
 <!-- Optional JavaScript -->

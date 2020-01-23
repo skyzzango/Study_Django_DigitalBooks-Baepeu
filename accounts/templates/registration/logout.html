@@ -1,18 +1,15 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    - Update
+    - Logout
 {% endblock title %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 panel panel-default">
-            <form action="" method="post" enctype="multipart/form-data">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <input type="submit" class="btn btn-primary" value="Update">
-            </form>
+            <div class="alert alert-info">You have been successfully logged out.</div>
+            <a class="btn btn-primary" href="{% url 'login' %}">Click to Login</a>
         </div>
         <div class="col-md-2"></div>
     </div>

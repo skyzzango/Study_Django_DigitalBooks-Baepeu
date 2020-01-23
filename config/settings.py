@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookmark.apps.BookmarkConfig',
     'photo.apps.PhotoConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +120,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # Media files (Upload files)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Redirect page after login
+LOGIN_REDIRECT_URL = '/'
