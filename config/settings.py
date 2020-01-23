@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'bookmark.apps.BookmarkConfig',
     'photo.apps.PhotoConfig',
     'accounts.apps.AccountsConfig',
+    'django.contrib.sites',
+    'disqus',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +125,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Redirect page after login
 LOGIN_REDIRECT_URL = '/'
+
+# Configuring your Django for Disqus
+DISQUS_WEBSITE_SHORTNAME = 'kh1024'
+SITE_ID = 1
